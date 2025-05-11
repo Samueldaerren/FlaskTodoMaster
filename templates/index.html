@@ -29,9 +29,9 @@
                                 <td>{{ task.date_created.date() }}</td>
                                 <td>
                                     {% if task.completed == 0 %}
-                                        <span class="badge bg-success">Incompleted</span>
+                                        <span class="badge bg-info">Incompleted</span>
                                     {% else %}
-                                        <span class="badge bg-danger">Completed</span>
+                                        <span class="badge bg-success">Completed</span>
                                     {% endif %}
                                 </td>
                                 <td>
