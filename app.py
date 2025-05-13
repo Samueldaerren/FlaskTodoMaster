@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -15,7 +15,7 @@ class Todo(db.Model):
     date_created = db.Column(db.DateTime, default=datetime.utcnow) 
 
     def __repr__(self):
-        return '<Task %r>' % self.id
+        return f'Task: {self.id}'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -29,7 +29,7 @@ def index():
             flash('Task adding succesfully!', 'success')
             return redirect('/')
         except:
-            flash('There was an issue deleting the task', 'danger')
+            flash('There was an issue adding the task', 'danger')
             return redirect('/')
     else:
         tasks = Todo.query.order_by(Todo.date_created).all()
